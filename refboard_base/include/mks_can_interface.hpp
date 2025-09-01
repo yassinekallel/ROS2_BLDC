@@ -83,6 +83,14 @@ private:
         bool position_valid;
         bool enable_status_valid;
         std::mutex mutex;
+        
+        // Make the struct non-copyable but movable
+        MotorState() : last_position(0), last_enable_status(false), 
+                      position_valid(false), enable_status_valid(false) {}
+        MotorState(const MotorState&) = delete;
+        MotorState& operator=(const MotorState&) = delete;
+        MotorState(MotorState&&) = default;
+        MotorState& operator=(MotorState&&) = default;
     };
     std::map<JointId, MotorState> motor_states_;
     

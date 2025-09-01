@@ -11,10 +11,10 @@ namespace mks {
 
 MksCanInterface::MksCanInterface() 
     : can_socket_(-1), initialized_(false), running_(false) {
-    // Initialize motor states
+    // Initialize motor states using emplace
     for (uint8_t i = 1; i <= 6; ++i) {
         JointId joint_id = static_cast<JointId>(i);
-        motor_states_[joint_id] = MotorState();
+        motor_states_.emplace(joint_id, MotorState());
     }
 }
 

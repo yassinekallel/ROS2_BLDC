@@ -2,6 +2,7 @@
 #define MKS_PROTOCOL_HPP
 
 #include <cstdint>
+#include <cstddef>
 #include <vector>
 
 namespace mks {
