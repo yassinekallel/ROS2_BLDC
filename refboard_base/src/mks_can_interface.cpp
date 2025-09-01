@@ -6,15 +6,18 @@
 #include <cstring>
 #include <iostream>
 #include <chrono>
+#include <tuple>
 
 namespace mks {
 
 MksCanInterface::MksCanInterface() 
     : can_socket_(-1), initialized_(false), running_(false) {
-    // Initialize motor states using emplace
+    // Initialize motor states using piecewise_construct
     for (uint8_t i = 1; i <= 6; ++i) {
         JointId joint_id = static_cast<JointId>(i);
-        motor_states_.emplace(joint_id, MotorState());
+        motor_states_.emplace(std::piecewise_construct,
+                             std::forward_as_tuple(joint_id),
+                             std::forward_as_tuple());
     }
 }
 

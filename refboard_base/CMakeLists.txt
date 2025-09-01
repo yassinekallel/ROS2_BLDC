@@ -35,8 +35,13 @@ add_executable(test_mks_can test/test_mks_can.cpp)
 target_link_libraries(test_mks_can refboard_base)
 target_compile_features(test_mks_can PRIVATE cxx_std_17)
 
-# Install test program
-install(TARGETS test_mks_can
+# Build simple test program
+add_executable(test_motor_simple test/test_motor_simple.cpp)
+target_link_libraries(test_motor_simple refboard_base)
+target_compile_features(test_motor_simple PRIVATE cxx_std_17)
+
+# Install test programs
+install(TARGETS test_mks_can test_motor_simple
   DESTINATION lib/${PROJECT_NAME}
 )
 
