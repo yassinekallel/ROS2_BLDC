@@ -232,7 +232,7 @@ return_type RefBoardHardwareInterface::perform_command_mode_switch(
     return return_type::OK;
 }
 
-return_type RefBoardHardwareInterface::read(const rclcpp::Time& time, const rclcpp::Duration& period) {
+return_type RefBoardHardwareInterface::read(const rclcpp::Time& time, const rclcpp::Duration& /* period */) {
     last_read_time_ = time;
     
     // Request position updates from all motors
@@ -326,7 +326,7 @@ void RefBoardHardwareInterface::onGenericResponseReceived(mks::JointId joint_id,
 }
 
 // Helper function implementations
-Joint* RefBoardHardwareInterface::getJointById(mks::JointId joint_id) {
+RefBoardHardwareInterface::Joint* RefBoardHardwareInterface::getJointById(mks::JointId joint_id) {
     for (auto& joint : joints_) {
         if (joint.joint_id == joint_id) {
             return &joint;

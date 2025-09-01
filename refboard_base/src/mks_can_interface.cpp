@@ -25,7 +25,7 @@ MksCanInterface::~MksCanInterface() {
     deinit();
 }
 
-bool MksCanInterface::init(const std::string& can_interface, int bitrate) {
+bool MksCanInterface::init(const std::string& can_interface, int /* bitrate */) {
     if (initialized_) {
         std::cerr << "MksCanInterface already initialized" << std::endl;
         return false;
