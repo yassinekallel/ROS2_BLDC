@@ -20,9 +20,7 @@ add_library(refboard_ros2_control_plugin SHARED
   src/refboard_hardware_interface.cpp
 )
 
-# Link with refboard_base
-target_link_libraries(refboard_ros2_control_plugin refboard_base)
-
+# Use ament_target_dependencies for ROS2 package linking
 ament_target_dependencies(refboard_ros2_control_plugin
   rclcpp
   hardware_interface
