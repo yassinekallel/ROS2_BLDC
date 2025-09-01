@@ -11,9 +11,9 @@ find_package(rclcpp REQUIRED)
 find_package(hardware_interface REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
+find_package(refboard_base REQUIRED)
 
 include_directories(include)
-include_directories(../refboard_base/include)
 
 # Create the hardware interface plugin
 add_library(refboard_ros2_control_plugin SHARED
@@ -21,13 +21,14 @@ add_library(refboard_ros2_control_plugin SHARED
 )
 
 # Link with refboard_base
-target_link_libraries(refboard_ros2_control_plugin refboard_base)
+target_link_libraries(refboard_ros2_control_plugin refboard_base::refboard_base)
 
 ament_target_dependencies(refboard_ros2_control_plugin
   rclcpp
   hardware_interface
   pluginlib
   rclcpp_lifecycle
+  refboard_base
 )
 
 pluginlib_export_plugin_description_file(hardware_interface refboard_hardware_interface.xml)
