@@ -21,7 +21,7 @@ add_library(refboard_ros2_control_plugin SHARED
 )
 
 # Link with refboard_base
-target_link_libraries(refboard_ros2_control_plugin refboard_base::refboard_base)
+target_link_libraries(refboard_ros2_control_plugin refboard_base)
 
 ament_target_dependencies(refboard_ros2_control_plugin
   rclcpp

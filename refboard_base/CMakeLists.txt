@@ -8,12 +8,16 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 
-include_directories(include)
-
 # Create the refboard_base library
 add_library(refboard_base SHARED
   src/mks_can_interface.cpp
   src/mks_protocol.cpp
+)
+
+# Set target include directories
+target_include_directories(refboard_base PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
 )
 
 target_compile_features(refboard_base PRIVATE cxx_std_17)
@@ -23,11 +27,17 @@ install(DIRECTORY include/
   DESTINATION include/
 )
 
-# Install library
+# Export the library for other packages to use
+ament_export_targets(refboard_base_targets HAS_LIBRARY_TARGET)
+ament_export_dependencies(ament_cmake)
+
+# Install library with export
 install(TARGETS refboard_base
+  EXPORT refboard_base_targets
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
+  INCLUDES DESTINATION include
 )
 
 # Build test program
