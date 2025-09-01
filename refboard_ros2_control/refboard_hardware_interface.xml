@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<library path="refboard_ros2_control_plugin">
+  <class
+    name="refboard_ros2_control/RefBoardHardwareInterface"
+    type="refboard_ros2_control::RefBoardHardwareInterface"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>
+      RefBoard Hardware Interface for ros2_control using MKS Protocol over CAN.
+      Supports position control for BLDC motors via CANable v2 interface.
+    </description>
+  </class>
+</library>

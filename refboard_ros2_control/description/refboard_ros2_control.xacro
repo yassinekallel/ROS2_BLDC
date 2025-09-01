@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="refboard_robot">
+
+  <xacro:macro name="refboard_ros2_control" params="
+    name
+    can_interface:=can0
+    ">
+    <ros2_control name="${name}" type="system">
+      <hardware>
+        <plugin>refboard_ros2_control/RefBoardHardwareInterface</plugin>
+        <param name="can_interface">${can_interface}</param>
+      </hardware>
+      
+      <!-- Joint X (CAN ID 0x01) -->
+      <joint name="joint_x">
+        <command_interface name="position"/>
+        <command_interface name="velocity"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      
+      <!-- Joint Y (CAN ID 0x02) -->
+      <joint name="joint_y">
+        <command_interface name="position"/>
+        <command_interface name="velocity"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      
+      <!-- Joint Z (CAN ID 0x03) -->
+      <joint name="joint_z">
+        <command_interface name="position"/>
+        <command_interface name="velocity"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      
+      <!-- Joint A (CAN ID 0x04) -->
+      <joint name="joint_a">
+        <command_interface name="position"/>
+        <command_interface name="velocity"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      
+      <!-- Joint B (CAN ID 0x05) -->
+      <joint name="joint_b">
+        <command_interface name="position"/>
+        <command_interface name="velocity"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      
+      <!-- Joint C (CAN ID 0x06) -->
+      <joint name="joint_c">
+        <command_interface name="position"/>
+        <command_interface name="velocity"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+    </ros2_control>
+  </xacro:macro>
+
+</robot>
